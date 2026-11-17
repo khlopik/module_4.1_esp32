@@ -17,7 +17,7 @@ namespace uart
         uart_config.data_bits = UART_DATA_8_BITS;
         uart_config.parity = UART_PARITY_DISABLE;
         uart_config.stop_bits = UART_STOP_BITS_1;
-        uart_config.flow_ctrl = UART_HW_FLOWCTRL_CTS_RTS;
+        uart_config.flow_ctrl = UART_HW_FLOWCTRL_DISABLE;
         uart_config.rx_flow_ctrl_thresh = 122;
 
         ESP_ERROR_CHECK(uart_param_config(portNum_, &uart_config));
@@ -110,7 +110,10 @@ namespace uart
                     stringCommand = "Unknown";
                 }
 
-                uart_write_bytes(portNum_, stringCommand, strlen(stringCommand));
+                ESP_LOGI(TAG, "stringCommand: %s", stringCommand);
+                char tx[16];
+                int len = snprintf(tx, sizeof(tx), "%s\n", stringCommand);
+                uart_write_bytes(portNum_, tx, len);
             }
         }
     }

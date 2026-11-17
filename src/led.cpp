@@ -19,6 +19,7 @@ namespace led
         rmt_config.flags.with_dma = false;
 
         ESP_ERROR_CHECK(led_strip_new_rmt_device(&strip_config, &rmt_config, &ledStrip_));
+        turnOff();
     }
 
     void LedHandle::setColor(Color color, uint8_t value)

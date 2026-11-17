@@ -54,6 +54,7 @@ namespace
 
 void setup()
 {
+    ledHandle.init();
     buttonHandler.init(buttonConfig::pin, buttonConfig::shortPressTimeMs, buttonConfig::activeLevel);
     buttonHandler.setOnPressCallback(&onButtonPress);
     buttonHandler.setOnReleaseCallback(&OnButtonRelease);

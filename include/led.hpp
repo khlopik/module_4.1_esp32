@@ -21,9 +21,9 @@ namespace led
         void turnOn();
 
     private:
-        uint8_t redValue_ = 100;
-        uint8_t greenValue_ = 100;
-        uint8_t blueValue_ = 100;
+        uint8_t redValue_ = 127;
+        uint8_t greenValue_ = 127;
+        uint8_t blueValue_ = 127;
         bool isOn_ = false;
 
         static constexpr gpio_num_t BUILT_IN_LED_PIN = GPIO_NUM_48;
